@@ -2,6 +2,11 @@ import pygame
 from constants import *
 from player import Player
 
+updatable = pygame.sprite.Group()
+drawable = pygame.sprite.Group()
+
+Player.containers = (updatable, drawable)
+
 def main():
     pygame.init()
     clock = pygame.time.Clock()
@@ -16,9 +21,11 @@ def main():
             if event.type == pygame.QUIT:
                 return
         
-        player.update(dt)
+        for entity in updatable:
+            entity.update(dt)
         screen.fill((0, 0, 0))  # Fill the screen with black
-        player.draw(screen)   # draw the player
+        for entity in drawable:
+            entity.draw(screen)    # draw the player
         pygame.display.flip()  # Refresh the screen
 
 
