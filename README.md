@@ -1,2 +1,3 @@
 # Asteroids
-Porjects with Boot.dev
+Projects with Boot.dev
+First game
